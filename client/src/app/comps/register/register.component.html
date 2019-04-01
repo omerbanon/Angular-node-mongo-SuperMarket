@@ -1,0 +1,98 @@
+<h1>Register</h1>
+
+<div *ngIf="FirstPart">
+  <form class="example-form col-sm-4" [formGroup]="FirstRegisterForm">
+
+    <mat-form-field class="example-full-width">
+      <input matInput placeholder="Email" formControlName="username" email="true">
+    </mat-form-field>
+    <br />
+    <div class="alert alert-danger"
+      *ngIf="this.FirstRegisterForm.controls.username.invalid&& (this.FirstRegisterForm.controls.username.dirty || this.FirstRegisterForm.controls.username.touched)">
+      Please include an "@" in the email address and ".com"
+    </div>
+    <mat-form-field class="example-full-width">
+      <input matInput placeholder="ID" formControlName="clientID" />
+    </mat-form-field>
+    <br />
+    <div class="alert alert-danger"
+      *ngIf="this.FirstRegisterForm.controls.clientID.invalid&&(this.FirstRegisterForm.controls.clientID.dirty || this.FirstRegisterForm.controls.clientID.touched)">
+      id is required.
+    </div>
+    <mat-form-field class="example-full-width">
+      <input type="password" matInput placeholder="password" formControlName="password" />
+    </mat-form-field>
+    <br />
+    <div class="alert alert-danger"
+      *ngIf="this.FirstRegisterForm.controls.password.invalid&&(this.FirstRegisterForm.controls.password.dirty || this.FirstRegisterForm.controls.password.touched)">
+      password is required.
+    </div>
+    <mat-form-field class="example-full-width">
+      <input type="password" matInput placeholder="password Confirm" formControlName="passwordConfirm" />
+    </mat-form-field>
+    <br />
+    <div class="alert alert-danger"
+      *ngIf="this.FirstRegisterForm.controls.passwordConfirm.invalid&&(this.FirstRegisterForm.controls.passwordConfirm.dirty || this.FirstRegisterForm.controls.passwordConfirm.touched)">
+      password Confirm is required.
+    </div>
+    <div class="alert alert-danger" *ngIf="alertErrShow">
+      {{alertMsg}}
+    </div>
+    <button mat-button color="primary" [routerLink]="'/'">Login</button>
+
+    <button mat-button color="primary" [disabled]="!this.FirstRegisterForm.valid"
+      (click)="FirstFormFunc()">Next</button>
+  </form>
+</div>
+
+<!----------------------------------- Second part ---------------------------------------------------------------->
+<!-----------------------------------  ---------------------------------------------------------------->
+
+<div *ngIf="SecondPart">
+  <form class="example-form col-sm-4" [formGroup]="SecondRegisterForm">
+    <mat-form-field>
+      <mat-label>Select your city (required)</mat-label>
+      <select matNativeControl required formControlName="city">
+        <option label="--select something --"></option>
+        <option *ngFor="let city of AllCities" value={{city.cityName}}>{{city.cityName}}</option>
+
+      </select>
+      <mat-error *ngIf="SecondRegisterForm.controls.city.hasError('required')">
+        This field is required
+      </mat-error>
+
+    </mat-form-field>
+    <br />
+
+    <mat-form-field class="example-full-width">
+      <input matInput placeholder="Street" formControlName="street" />
+    </mat-form-field>
+    <br />
+    <div class="alert alert-danger"
+      *ngIf="this.SecondRegisterForm.controls.street.invalid&&(this.SecondRegisterForm.controls.street.dirty || this.SecondRegisterForm.controls.street.touched)">
+      street is required.
+    </div>
+    <mat-form-field class="example-full-width">
+      <input type="text" matInput placeholder="Name" formControlName="name" />
+    </mat-form-field>
+    <br />
+    <div class="alert alert-danger"
+      *ngIf="this.SecondRegisterForm.controls.name.invalid&&(this.SecondRegisterForm.controls.name.dirty || this.SecondRegisterForm.controls.name.touched)">
+      name is required.
+    </div>
+    <mat-form-field class="example-full-width">
+      <input type="text" matInput placeholder="Last Name" formControlName="lastName" />
+    </mat-form-field>
+    <br />
+    <div class="alert alert-danger"
+      *ngIf="this.SecondRegisterForm.controls.lastName.invalid&&(this.SecondRegisterForm.controls.lastName.dirty || this.SecondRegisterForm.controls.lastName.touched)">
+      Last Name Confirm is required.
+    </div>
+    <div class="alert alert-danger" *ngIf="alertErrShow">
+      {{alertMsg}}
+    </div>
+    <button mat-button color="primary" (click)="PreviousForm()">Previous</button>
+    <button mat-button color="primary" [disabled]="!this.SecondRegisterForm.valid"
+      (click)="SecondFormFunc()">Register</button>
+  </form>
+</div>

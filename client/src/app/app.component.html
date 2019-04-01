@@ -1,0 +1,28 @@
+<!-- <app-login></app-login>
+<app-register></app-register> -->
+
+
+<div class="mat-app-background ">
+        <mat-drawer-container class="MainContainer" autosize>
+            <app-category *ngFor="let category of allCatgories" [Category]="category" class="nav-item nav-link active"></app-category>
+        
+            <mat-drawer #drawer class="example-sidenav" mode="side">
+              
+              <p>Auto-resizing sidenav</p>
+              <p *ngIf="showFiller">Lorem, ipsum dolor sit amet consectetur.</p>
+              <button (click)="showFiller = !showFiller" mat-raised-button>
+                Toggle extra text
+              </button>
+            </mat-drawer>
+         
+            <div class="example-sidenav-content">
+              <button type="button" mat-button (click)="drawer.toggle()">
+                Toggle sidenav
+              </button>
+               <router-outlet></router-outlet>
+              <!-- <app-main class="container"></app-main> -->
+            </div>
+          
+          </mat-drawer-container>
+        </div>
+       

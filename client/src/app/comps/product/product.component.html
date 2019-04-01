@@ -1,0 +1,18 @@
+<div class="box-wrapper {{bodyClass}}">
+    <img src="{{Product.img}}" alt="rhcp" />
+  <div class="box-content {{bodyClass}}">
+
+          <a class="buy {{bodyClass}} " (click)="addToCart($event)" href="javascript:void(0)"><span><i class="fa fa-cart-plus"></i></span></a>
+          <div class="title">{{Product.productName}}</div>
+          <span class='number-wrapper' >
+                <input type="number" min="0" max="18" [(ngModel)]="Amount"/>
+            </span>
+         
+          <span class="price">{{Product.price}}$</span>
+         
+          <div class="footer">
+</div>
+    </div>
+    <div class="success {{buyClass}}"></div>
+</div>
+
