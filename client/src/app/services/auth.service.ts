@@ -23,7 +23,7 @@ export class AuthService {
     return this.http.post("/checkclient", userObj, httpOptions);
   }
   getAllCities(): Observable<any> {
-    debugger
+
     return this.http.get("/allcities");
   }
   doRegister(ClientObj): Observable<any> {
@@ -35,7 +35,7 @@ export class AuthService {
     {
         this.http.get("/checkauth").subscribe((data:any)=>
             {
-                debugger;
+            
                 resolve(data.user);
             })
     }); 

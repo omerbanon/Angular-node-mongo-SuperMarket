@@ -2,9 +2,7 @@ import { Component, OnInit, Input } from '@angular/core';
 import { NgbActiveModal, NgbModal } from '@ng-bootstrap/ng-bootstrap';
 import { ShippingService } from 'src/app/services/shipping.service';
 
-var cartMsg:string='ddd'
 @Component({
-  
   template: `
     <div class="modal-header">
       <h4 class="modal-title">${cartMsg}</h4>
@@ -22,10 +20,10 @@ var cartMsg:string='ddd'
   `
 })
 export class NgbdModal1Content {
-  
+ cartMsg:string='ddd'
+
   constructor(private modalService: NgbModal, public activeModal: NgbActiveModal, private shippingService:ShippingService) {
 debugger
-let name=cartMsg
   }
 
   ngOnInit(): void {
@@ -75,16 +73,13 @@ export class NgbdModalStacked implements OnInit  {
     debugger
    await this.shippingService.CartStateEventEmitter.subscribe(data=>{
       cartMsg=data.msg
-   debugger
+   
       this.open()
     })
   
   }
   open() {
- debugger
- const modalRef = this.modalService.open(NgbdModal1Content);
- debugger
-modalRef.componentInstance.name = 'World';
-   
+ 
+    this.modalService.open(NgbdModal1Content);
   }
 }
