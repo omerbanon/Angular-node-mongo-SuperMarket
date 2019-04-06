@@ -4,7 +4,7 @@ var Schema = mongoose.Schema;
 //schema- the structure of the db
 var cartSchema = new Schema({
   userID: String,
-  date: String,
+  date: Date,
   isDone:Boolean
 });
 

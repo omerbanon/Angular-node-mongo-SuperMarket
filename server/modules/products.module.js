@@ -1,14 +1,25 @@
 var Product = require('../models/product.model');
 var Catgory = require('../models/category.model');
-
-
-
-
+var cartProduct=require('../models/cartProduct.model');
 
 var productModule = { 
+////////////Products/////////////////////////////
     saveProduct: (objToSave) => {
         var newProduct = new Product(objToSave);
         return newProduct.save();
+    },
+    getProductsByCategory:(IDToCheck)=>{
+        return Product.find({
+            categoryID:IDToCheck
+        });
+    },
+    getProductsByID:(Idsarr)=>{
+        try{
+        
+        return Product.find({_id:Idsarr })
+    }catch(err){
+       console.log(err) 
+    }
     },
     saveCatgory: (objToSave) => {
         var newProduct = new Catgory({categoryName:objToSave});
@@ -41,7 +52,23 @@ var productModule = {
             });
         else
             return client.find();
-    }
+    },
+////////////////////carts  Product////////////////////////
+saveCartProduct: (objToSave) => {
+    var newCartProduct = new cartProduct(objToSave);
+    return newCartProduct.save();
+},
+getAllCartProducts: (cartid) => {
+   
+        return cartProduct.find({
+            cartID: cartid
+        });
+    
+}
+
+
+
+
 }
 
 module.exports = productModule;

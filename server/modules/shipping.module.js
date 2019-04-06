@@ -31,11 +31,6 @@ var autModule = {
         else
             return Client.find();
     },
-    getProductsByCategory:(IDToCheck)=>{
-        return Product.find({
-            categoryID:IDToCheck
-        });
-    },
     checkclientUserName:(UserNameToCheck)=>{
         return Client.find({
             username:UserNameToCheck

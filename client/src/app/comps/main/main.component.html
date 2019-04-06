@@ -1,11 +1,8 @@
 
-
-
-
 <div class="row ">
 <button  *ngFor="let category of allCategories"  mat-button color="primary"(click)="getCategoryProduct($event)" id="{{category._id}}" >{{category.categoryName}}</button>
 </div>
 <div class="row marginer">
 <app-product class="col-sm-2 " *ngFor="let product of allProducts" [Product]="product" ></app-product>
 </div>
-<ngbd-modal-basic [CartMsg]="msg" ></ngbd-modal-basic>
+<!-- <ngbd-modal-basic [CartMsg]="msg" ></ngbd-modal-basic> -->

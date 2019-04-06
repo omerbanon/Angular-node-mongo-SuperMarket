@@ -5,7 +5,7 @@ import { ShippingService } from 'src/app/services/shipping.service';
 @Component({
   template: `
     <div class="modal-header">
-      <h4 class="modal-title">${cartMsg}</h4>
+      <h4 class="modal-title"></h4>
       <button type="button" class="close" aria-label="Close" (click)="activeModal.dismiss('Cross click')">
         <span aria-hidden="true">&times;</span>
       </button>
@@ -57,7 +57,7 @@ debugger
 export class NgbdModal2Content {
   constructor(public activeModal: NgbActiveModal) {debugger}
 }
-
+ 
 @Component({
   selector: 'ngbd-modal-basic',
   templateUrl: './modal-basic.html'
@@ -72,7 +72,7 @@ export class NgbdModalStacked implements OnInit  {
  async ngOnInit(){
     debugger
    await this.shippingService.CartStateEventEmitter.subscribe(data=>{
-      cartMsg=data.msg
+    
    
       this.open()
     })

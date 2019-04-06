@@ -1,6 +1,8 @@
 import { Component, OnInit ,Input} from '@angular/core';
 import { ShippingService } from 'src/app/services/shipping.service';
 import {NgbdModalStacked} from '../modal/modal-config'; 
+import { Router } from '@angular/router';
+import { CartComponent } from '../cart/cart.component';
 
 @Component({
   selector: 'app-main',
@@ -8,39 +10,23 @@ import {NgbdModalStacked} from '../modal/modal-config';
   styleUrls: ['./main.component.css']
 })
 export class MainComponent implements OnInit {
-
-  constructor(private shippingService:ShippingService) {
-    
+currentCart:any;
+  constructor(private shippingService:ShippingService,private router: Router) {
+    console.log(this.router.getCurrentNavigation().extras.state); // should log out 'bar'
+    this.currentCart=this.router.getCurrentNavigation().extras.state;
+debugger;
    }
   @Input() drawer:any;
   allCategories:any[]=[];
   allProducts:any[]=[];
-   msg:any={
-    msg:''
-  }
+  
   ngOnInit() {
-   
-this.shippingService.CartEventEmitter.subscribe(data=>{
-if(data.UserCarts.length==0){
-  debugger
-  this.msg.msg="new user"
- this.shippingService.CartStateEventEmitter.emit(this.msg)
+   debugger
+    this.shippingService.CartStateEventEmitter.subscribe(cart=>{
+      debugger
+console.log(cart)
 
-   this.shippingService.createNewCart(data.user._id).subscribe(data=>{
-     debugger
-   })
-}
-else {
-let unDoneCart= data.UserCarts.filter(c=>c.isDone==false)
-debugger;
- this.msg.msg="unDone Cart"
- this.shippingService.CartStateEventEmitter.emit(this.msg)
- }
-})
-
-
-
-
+    })
 
 
     this.shippingService.getAllCategories().subscribe(data=>{
@@ -48,11 +34,13 @@ debugger;
       this.allCategories=data;
     
       })
+
   }
   getCategoryProduct(event){
-
+    debugger
     this.shippingService.getCategoryProductsByID({id:event.currentTarget.id}).subscribe(data=>{
-    this.allProducts=data
+   
+      this.allProducts=data
 
     })
     

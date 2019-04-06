@@ -25,7 +25,7 @@ export class LoginComponent implements OnInit {
   login  () {
    
     this.authService.dologin(this.loginForm.value).subscribe(async data=>{
-      await  this.router.navigate(["/main"])
+      await  this.router.navigate(["/startshopping"])
     await  this.shippingService.getUserCart(data.user._id).subscribe(async UserCart=>{
       let obj={
         UserCarts:UserCart,

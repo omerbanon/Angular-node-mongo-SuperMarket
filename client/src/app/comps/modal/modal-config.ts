@@ -2,35 +2,26 @@ import { Component, OnInit, Input } from '@angular/core';
 import { NgbActiveModal, NgbModal } from '@ng-bootstrap/ng-bootstrap';
 import { ShippingService } from 'src/app/services/shipping.service';
 
-var cartMsg:string='ddd'
 @Component({
+
+  templateUrl: './modal.html'
   
-  template: `
-    <div class="modal-header">
-      <h4 class="modal-title">${cartMsg}</h4>
-      <button type="button" class="close" aria-label="Close" (click)="activeModal.dismiss('Cross click')">
-        <span aria-hidden="true">&times;</span>
-      </button>
-    </div>
-    <div class="modal-body">
-      <p>Hello, World!</p>
-      <p><button class="btn btn-lg btn-outline-primary" (click)="open()">Launch demo modal</button></p>
-    </div>
-    <div class="modal-footer">
-      <button type="button" class="btn btn-outline-dark" (click)="activeModal.close('Close click')">Close</button>
-    </div>
-  `
 })
 export class NgbdModal1Content {
-  
+  cartMsg:string='ddd'
   constructor(private modalService: NgbModal, public activeModal: NgbActiveModal, private shippingService:ShippingService) {
 debugger
-let name=cartMsg
+
   }
 
-  ngOnInit(): void {
-    debugger;
-   }
+  async ngOnInit(){
+    debugger
+   await this.shippingService.CartStateEventEmitter.subscribe(data=>{
+  this.cartMsg=data.msg;
+      this.open()
+    })
+  
+  }
 
   open() {
     debugger;
@@ -71,13 +62,11 @@ export class NgbdModalStacked implements OnInit  {
  
      
   }
- async ngOnInit(){
-    debugger
-   await this.shippingService.CartStateEventEmitter.subscribe(data=>{
-      cartMsg=data.msg
-   debugger
-      this.open()
-    })
+  async ngOnInit(){
+
+
+    
+ this.open()
   
   }
   open() {

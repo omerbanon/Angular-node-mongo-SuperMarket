@@ -73,7 +73,7 @@ debugger;
 this.authService.doRegister(returnedTarget).subscribe(data=>{
   debugger;
 if(data.msg=="OK"){
- this.router.navigate(["/main"])
+ this.router.navigate(["/startshopping"])
 }
 else{
   this.alertErrShow=true

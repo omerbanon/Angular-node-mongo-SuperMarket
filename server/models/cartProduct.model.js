@@ -8,9 +8,9 @@ var Schema = mongoose.Schema;
 //cart Product
 var cartProductSchema = new Schema({
   productID: String,
-  cartID: Number,
-  amount: Number ,
-  totalPrice:Number,
+  cartID: String,
+  amount: String ,
+  totalPrice:String,
 });
 
 //we work with the model to save as collection

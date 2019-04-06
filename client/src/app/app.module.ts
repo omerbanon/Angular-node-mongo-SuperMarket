@@ -18,7 +18,9 @@ import { ProductComponent } from './comps/product/product.component';
 import { CartComponent } from './comps/cart/cart.component';
 import {NgbModule} from '@ng-bootstrap/ng-bootstrap';
 import {NgbdModalStacked} from './comps/modal/modal-config';
-import {NgbdModal1Content} from './comps/modal/modal-config'; 
+import {NgbdModal1Content} from './comps/modal/modal-config';
+import { StartShoppingComponent } from './comps/start-shopping/start-shopping.component';
+import { CartProductComponent } from './comps/cart-product/cart-product.component'; 
 @NgModule({
   declarations: [
   
@@ -33,7 +35,9 @@ import {NgbdModal1Content} from './comps/modal/modal-config';
     ProductComponent,
     CartComponent, 
     NgbdModalStacked,
-    NgbdModal1Content
+    NgbdModal1Content,
+    StartShoppingComponent,
+    CartProductComponent
   ],
    entryComponents: [NgbdModal1Content],
   imports: [
